@@ -1,8 +1,7 @@
 import fs from "fs";
-import path from "path";
 
-export const getDocsFileNames = (): string[] => {
-  const fileNames = fs.readdirSync(path.join(process.cwd(), "docs"));
+export const getDocsFileNames = (path: string): string[] => {
+  const fileNames = fs.readdirSync(path);
 
   const paths = fileNames.map((fileName) => fileName.replace(/\.md$/, ""));
 
