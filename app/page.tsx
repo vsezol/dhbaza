@@ -11,7 +11,7 @@ export default function Home() {
         <h1 className={title()}>База&nbsp;</h1>
         <h1 className={title({ color: "violet" })}>Даунхилла&nbsp;</h1>
         <br />
-        <h1 className={title()}>русcкоговорящего сообщества</h1>
+        <h1 className={title()}>для русcкоговорящего сообщества</h1>
         <h2 className={subtitle({ class: "mt-4" })}>База. Практика. Катка.</h2>
       </div>
 
