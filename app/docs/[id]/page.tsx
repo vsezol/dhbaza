@@ -38,6 +38,11 @@ export default async function Post({
               {children}
             </h1>
           ),
+          // img: (props) => (
+          //   <div>
+          //     <Image {...props} alt={props.alt} />
+          //   </div>
+          // ),
         }}
       >
         {file.content}
