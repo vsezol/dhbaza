@@ -1,5 +1,6 @@
 import path from "path";
 
+import { Image } from "@nextui-org/image";
 import clsx from "clsx";
 import Markdown from "react-markdown";
 
@@ -38,11 +39,19 @@ export default async function Post({
               {children}
             </h1>
           ),
-          // img: (props) => (
-          //   <div>
-          //     <Image {...props} alt={props.alt} />
-          //   </div>
-          // ),
+          p: ({ children }) => <div>{children}</div>,
+          img: ({ src, alt }) => (
+            <div className="w-full flex justify-center py-4 flex-col items-center gap-2">
+              <Image
+                isBlurred
+                isZoomed
+                alt={alt}
+                className="md:max-w-xl"
+                src={src}
+              />
+              {alt && <p className="italic">{alt}</p>}
+            </div>
+          ),
         }}
       >
         {file.content}
