@@ -49,7 +49,7 @@ export default function RootLayout({
               {children}
             </main>
 
-            <footer className="w-full flex items-center justify-center py-3">
+            <footer className="w-full flex items-center justify-end py-3 pr-3">
               <Link
                 isExternal
                 className="flex items-center gap-1 text-xs"
@@ -57,7 +57,7 @@ export default function RootLayout({
                 title="Author homepage"
               >
                 <span className="text-default-600">by</span>
-                <p className="text-primary">vsezol</p>
+                <p className="text-violet-500">vsezol</p>
               </Link>
             </footer>
           </div>
