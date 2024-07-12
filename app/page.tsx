@@ -1,6 +1,6 @@
 import { Button } from "@nextui-org/button";
 import { button } from "@nextui-org/theme";
-import NextLink from "next/link";
+import Link from "next/link";
 
 import { subtitle, title } from "@/components/primitives";
 
@@ -18,7 +18,7 @@ export default function Home() {
       </div>
 
       <div className="flex gap-3">
-        <NextLink href="/docs" scroll={false}>
+        <Link href={"/docs"}>
           <Button
             className={button({
               color: "primary",
@@ -28,7 +28,7 @@ export default function Home() {
           >
             Познать базу
           </Button>
-        </NextLink>
+        </Link>
       </div>
     </section>
   );
