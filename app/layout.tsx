@@ -49,11 +49,11 @@ export default function RootLayout({
               {children}
             </main>
 
-            <footer className="w-full flex items-center justify-end py-3 pr-3">
+            <footer className="w-full flex items-center justify-center py-3 pr-3">
               <Link
                 isExternal
                 className="flex items-center gap-1 text-xs"
-                href="https://vsezol.com"
+                href="https://t.me/lifeindev"
                 title="Author homepage"
               >
                 <span className="text-default-600">by</span>

@@ -7,10 +7,12 @@ export const siteConfig = {
     {
       label: "Главная",
       href: "/",
+      isActive: (url: string) => url === "/",
     },
     {
       label: "Дока",
       href: "/docs",
+      isActive: (url: string) => url.startsWith("/docs"),
     },
   ],
   navMenuItems: [
