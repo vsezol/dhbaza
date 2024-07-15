@@ -39,7 +39,26 @@ export default async function Post({
               {children}
             </h1>
           ),
-          p: ({ children }) => <div>{children}</div>,
+          p: ({ children }) => {
+            if (children?.toString().startsWith("//video//")) {
+              return (
+                <div className="w-full py-4">
+                  <iframe
+                    allowFullScreen
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    frameBorder="0"
+                    height="315"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    src={children.toString().replace("//video//", "")}
+                    title="YouTube video player"
+                    width="560"
+                  />
+                </div>
+              );
+            }
+
+            return <div>{children}</div>;
+          },
           img: ({ src, alt }) => (
             <div className="w-full flex justify-center py-4 flex-col items-center gap-2">
               <Image
