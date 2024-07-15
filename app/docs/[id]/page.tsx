@@ -46,6 +46,7 @@ export default async function Post({
                   <iframe
                     allowFullScreen
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    className="w-full aspect-video"
                     frameBorder="0"
                     height="315"
                     referrerPolicy="strict-origin-when-cross-origin"
