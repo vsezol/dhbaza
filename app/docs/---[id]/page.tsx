@@ -1,25 +1,22 @@
-import path from "path";
-
 import { Image } from "@nextui-org/image";
 import clsx from "clsx";
 import Markdown from "react-markdown";
 
 import { title } from "@/components/primitives";
-import { docsConfig } from "@/config/docs";
-import { getDocsFileNames } from "@/shared/get-docs-file-names";
-import { getMdFile } from "@/shared/get-md-file";
 
 export async function generateStaticParams() {
-  return getDocsFileNames(docsConfig.path).map((id) => ({ id }));
+  return ["sdhdh"];
+  // return [{ id: "heelside" }, { id: "toeside" }, { id: "films" }];
+  // return getFiles(docsConfig.path).map(({ name }, imnde) => ({ id: name }));
 }
-
-export default async function Post({
-  params: { id },
-}: {
-  params: { id: string };
-}) {
-  const filePath = path.join(docsConfig.path, `${id}.md`);
-  const file = getMdFile(filePath);
+// {
+//   params: { id },
+// }: {
+//   params: { id: string };
+// }
+export default async function Post() {
+  // const filePath = path.join(docsConfig.path, `${id}.md`);
+  // const file = getMdFile(filePath);
 
   return (
     <div>
@@ -48,11 +45,9 @@ export default async function Post({
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     className="w-full aspect-video"
                     frameBorder="0"
-                    height="315"
                     referrerPolicy="strict-origin-when-cross-origin"
                     src={children.toString().replace("//video//", "")}
                     title="YouTube video player"
-                    width="560"
                   />
                 </div>
               );
@@ -74,7 +69,8 @@ export default async function Post({
           ),
         }}
       >
-        {file.content}
+        BIm
+        {/* {file.content} */}
       </Markdown>
     </div>
   );
