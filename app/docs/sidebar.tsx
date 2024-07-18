@@ -36,24 +36,30 @@ function SidebarList({
 }) {
   const [isOpen, setIsOpen] = useState(false);
 
-  return links.map((link) => {
-    if (link.children) {
-      return (
-        <div key={link.name}>
-          <SidebarItem
-            isOpen={isOpen}
-            link={link}
-            pathname={pathname}
-            onClick={() => setIsOpen(!isOpen)}
-          />
+  return (
+    <>
+      {links.map((link) => {
+        if (link.children) {
+          return (
+            <div key={link.name}>
+              <SidebarItem
+                isOpen={isOpen}
+                link={link}
+                pathname={pathname}
+                onClick={() => setIsOpen(!isOpen)}
+              />
 
-          {isOpen && <SidebarList links={link.children} pathname={pathname} />}
-        </div>
-      );
-    }
+              {isOpen && (
+                <SidebarList links={link.children} pathname={pathname} />
+              )}
+            </div>
+          );
+        }
 
-    return <SidebarItem key={link.name} link={link} pathname={pathname} />;
-  });
+        return <SidebarItem key={link.name} link={link} pathname={pathname} />;
+      })}
+    </>
+  );
 }
 
 function SidebarItem({
