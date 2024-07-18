@@ -1,12 +1,11 @@
-import { redirect } from "next/navigation";
+import clsx from "clsx";
 
-import { docsConfig } from "@/config/docs";
-import { getFiles } from "@/shared/get-files";
+import { title } from "@/components/primitives";
 
 export default function DocsPage() {
-  const [{ name: firstFileName }] = getFiles(docsConfig.path).filter((file) =>
-    file.name.endsWith(".md")
+  return (
+    <h1 className={clsx(title({ size: "md", fullWidth: true }), "pb-4")}>
+      Добро пожаловать в доку!
+    </h1>
   );
-
-  redirect(`/docs/${firstFileName.replace(".md", "")}`);
 }

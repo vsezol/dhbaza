@@ -34,7 +34,9 @@ function SidebarList({
   links: SidebarLink[];
   pathname: string;
 }) {
-  const [isOpen, setIsOpen] = useState(false);
+  const [itemsState, setItemsState] = useState<
+    Record<string, boolean | undefined>
+  >({});
 
   return (
     <>
@@ -43,13 +45,18 @@ function SidebarList({
           return (
             <div key={link.name}>
               <SidebarItem
-                isOpen={isOpen}
+                isOpen={itemsState[link.name]}
                 link={link}
                 pathname={pathname}
-                onClick={() => setIsOpen(!isOpen)}
+                onClick={() =>
+                  setItemsState({
+                    ...itemsState,
+                    [link.name]: !itemsState[link.name],
+                  })
+                }
               />
 
-              {isOpen && (
+              {itemsState[link.name] && (
                 <SidebarList links={link.children} pathname={pathname} />
               )}
             </div>

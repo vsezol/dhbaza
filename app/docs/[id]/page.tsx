@@ -1,6 +1,7 @@
 import path from "path";
 
 import { Image } from "@nextui-org/image";
+import { Link } from "@nextui-org/link";
 import clsx from "clsx";
 import Markdown from "react-markdown";
 
@@ -83,6 +84,11 @@ export default async function Post({
 
             return <div>{children}</div>;
           },
+          a: ({ href, children }) => (
+            <Link className="pb-2" href={href}>
+              {children}
+            </Link>
+          ),
           img: ({ src, alt }) => (
             <div className="w-full flex justify-center py-4 flex-col items-center gap-2">
               <Image

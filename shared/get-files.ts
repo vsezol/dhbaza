@@ -12,22 +12,33 @@ export interface File {
 export const getFiles = (rootPath: string): File[] => {
   const fileNames = fs.readdirSync(rootPath);
 
-  const paths = fileNames.map((fileName): File => {
-    const isFolder = fs.lstatSync(path.join(rootPath, fileName)).isDirectory();
+  const paths = fileNames
+    .filter((x) => !x.startsWith("_"))
+    .map((fileName): File => {
+      const isFolder = fs
+        .lstatSync(path.join(rootPath, fileName))
+        .isDirectory();
 
-    if (!isFolder) {
+      if (!isFolder) {
+        return {
+          type: "file",
+          name: fileName,
+        };
+      }
+
       return {
-        type: "file",
+        type: "folder",
         name: fileName,
+        children: getFiles(path.join(rootPath, fileName)),
       };
-    }
+    })
+    .sort((a, b) => {
+      if (a.children && b.children) {
+        return 0;
+      }
 
-    return {
-      type: "folder",
-      name: fileName,
-      children: getFiles(path.join(rootPath, fileName)),
-    };
-  });
+      return a.children ? 1 : -1;
+    });
 
   return paths;
 };
