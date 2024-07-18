@@ -88,7 +88,7 @@ function SidebarItem({
   return (
     <Link
       className={clsx("capitalize text-xl mb-2")}
-      color={pathname === `/docs/${link}` ? "danger" : "foreground"}
+      color={pathname === `/docs/${link.href}` ? "danger" : "foreground"}
       href={`/docs/${link?.href}`}
       style={{ paddingLeft: `${20 * link.level}px` }}
     >

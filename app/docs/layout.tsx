@@ -20,19 +20,26 @@ export default function DocsLayout({
   );
 }
 
-function convertFilesToLinks(files: File[], level = 0): SidebarLink[] {
+function convertFilesToLinks(
+  files: File[],
+  level = 0,
+  path: string[] = []
+): SidebarLink[] {
   return files.map((file): SidebarLink => {
     if (file.children) {
       return {
         name: file.name,
         level,
-        children: convertFilesToLinks(file.children, level + 1),
+        children: convertFilesToLinks(file.children, level + 1, [
+          ...path,
+          file.name,
+        ]),
       };
     }
 
     return {
       name: file.name.replace(".md", ""),
-      href: file.name,
+      href: [...path, file.name.replace(".md", "")].join("-"),
       level,
     };
   });

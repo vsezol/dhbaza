@@ -1,22 +1,50 @@
+import path from "path";
+
 import { Image } from "@nextui-org/image";
 import clsx from "clsx";
 import Markdown from "react-markdown";
 
 import { title } from "@/components/primitives";
+import { docsConfig } from "@/config/docs";
+import { File, getFiles } from "@/shared/get-files";
+import { getMdFile } from "@/shared/get-md-file";
+
+interface PathParams {
+  id: string;
+}
+
+function convertFilesToParams(
+  files: File[],
+  path: string[] = []
+): PathParams[] {
+  return files.flatMap((x) => {
+    if (x.children) {
+      return convertFilesToParams(x.children, [
+        ...path,
+        x.name.replace(".md", ""),
+      ]);
+    }
+
+    return {
+      id: [...path, x.name.replace(".md", "")].join("-"),
+    };
+  });
+}
 
 export async function generateStaticParams() {
-  return ["sdhdh"];
-  // return [{ id: "heelside" }, { id: "toeside" }, { id: "films" }];
-  // return getFiles(docsConfig.path).map(({ name }, imnde) => ({ id: name }));
+  const files = getFiles(docsConfig.path);
+  const params = convertFilesToParams(files);
+
+  return params;
 }
-// {
-//   params: { id },
-// }: {
-//   params: { id: string };
-// }
-export default async function Post() {
-  // const filePath = path.join(docsConfig.path, `${id}.md`);
-  // const file = getMdFile(filePath);
+
+export default async function Post({
+  params: { id },
+}: {
+  params: { id: string };
+}) {
+  const filePath = path.join(docsConfig.path, `${id.split("-").join("/")}.md`);
+  const file = getMdFile(filePath);
 
   return (
     <div>
@@ -69,8 +97,7 @@ export default async function Post() {
           ),
         }}
       >
-        BIm
-        {/* {file.content} */}
+        {file.content}
       </Markdown>
     </div>
   );
