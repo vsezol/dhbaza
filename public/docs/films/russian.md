@@ -52,7 +52,3 @@ date: "2025-07-09"
 ## Царские ворота. Фильм про спот, не про людей
 
 //video//https://www.youtube.com/embed/YstIlLnM9M8?si=2aDoNYzJ1d0Gdfn0
-
-## Freeride weekend
-
-//video//https://www.youtube.com/embed/IGVmojqmGIM?si=ameUeSccCqhVLoIw

@@ -25,10 +25,6 @@ date: "2025-07-09"
 
 //video//https://www.youtube.com/embed/WpQiQJANlCo?si=ocb5stjXIomO_BnB
 
-## Tom's wurld
-
-//video//https://www.youtube.com/embed/WpQiQJANlCo?si=cuakvTomMkYflfdu
-
 ## Thrashin'
 
 //video//https://www.youtube.com/embed/EfyGY-H5O_M?si=-M-ik_dM_KLxmPiA
